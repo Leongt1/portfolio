@@ -1,19 +1,7 @@
 "use client";
 
 import { useState, useSyncExternalStore } from "react";
-
-const LIKED_KEY = "portfolio:liked";
-const COUNT_KEY = "portfolio:likeCount";
-const CHANGE_EVENT = "portfolio:likechange";
-
-function subscribe(callback: () => void) {
-  window.addEventListener("storage", callback);
-  window.addEventListener(CHANGE_EVENT, callback);
-  return () => {
-    window.removeEventListener("storage", callback);
-    window.removeEventListener(CHANGE_EVENT, callback);
-  };
-}
+import { getServerSnapshot, getSnapshot, subscribe, toggleLike } from "@/lib/likeStore";
 
 type LikeButtonProps = {
   /** "floating" renders the compact fixed-corner style */
@@ -21,38 +9,26 @@ type LikeButtonProps = {
 };
 
 /**
- * Local-only MVP like button (PRD 7.2 fallback).
- * Phase 2: swap the localStorage count for GET/POST /api/likes (Upstash).
- * Instances stay in sync via the CHANGE_EVENT, so it can render in
- * several places at once (footer + floating corner pill).
+ * Global like counter backed by /api/likes (server-authoritative count,
+ * signed httpOnly cookie for liked-state). Falls back to local-only
+ * localStorage mode when the backend isn't configured. All instances
+ * share state through lib/likeStore.
  */
 export default function LikeButton({ variant = "default" }: LikeButtonProps) {
-  const liked = useSyncExternalStore(
-    subscribe,
-    () => localStorage.getItem(LIKED_KEY) === "1",
-    () => false
-  );
-  const count = useSyncExternalStore(
-    subscribe,
-    () => Number(localStorage.getItem(COUNT_KEY)) || 0,
-    () => 0
-  );
+  const { count, liked } = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const [pulse, setPulse] = useState(false);
 
-  function toggle() {
-    const nextLiked = !liked;
-    localStorage.setItem(LIKED_KEY, nextLiked ? "1" : "0");
-    localStorage.setItem(COUNT_KEY, String(Math.max(0, count + (nextLiked ? 1 : -1))));
-    window.dispatchEvent(new Event(CHANGE_EVENT));
-    if (nextLiked) {
+  function handleClick() {
+    if (!liked) {
       setPulse(true);
     }
+    void toggleLike();
   }
 
   return (
     <button
       type="button"
-      onClick={toggle}
+      onClick={handleClick}
       aria-pressed={liked}
       aria-label={liked ? "Unlike this site" : "Like this site"}
       className={`group inline-flex items-center gap-3 border hud-clip-btn transition-colors hover:border-hud-red ${
