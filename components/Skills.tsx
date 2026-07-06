@@ -4,10 +4,10 @@ import SectionHeading from "./SectionHeading";
 
 export default function Skills() {
   return (
-    <section id="stack" className="py-24 border-t border-hud-line">
+    <section id="skills" className="py-24 border-t border-hud-line">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
-          <SectionHeading eyebrow="LOADOUT" title="Stack" />
+          <SectionHeading eyebrow="LOADOUT" title="Skills" />
         </Reveal>
         <div className="grid gap-6 sm:grid-cols-2">
           {skillGroups.map((group, i) => (

@@ -65,6 +65,40 @@ body {
   clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
 }
 
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/* CTA buttons — white layer sweeps in from the left, text flips to red */
+.hud-btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  cursor: pointer;
+  transition: color 250ms ease, transform 250ms ease, border-color 250ms ease;
+}
+.hud-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #ffffff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 250ms ease;
+}
+.hud-btn:hover,
+.hud-btn:focus-visible {
+  color: var(--color-hud-red);
+  border-color: #ffffff;
+  transform: scale(1.04);
+}
+.hud-btn:hover::before,
+.hud-btn:focus-visible::before {
+  transform: scaleX(1);
+}
+
 /* Corner brackets that appear on card hover */
 .hud-brackets {
   position: relative;
