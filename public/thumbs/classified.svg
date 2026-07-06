@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" font-family="monospace">
+  <rect width="800" height="450" fill="#12161d"/>
+  <g stroke="#1a212b" stroke-width="1">
+    <path d="M0 90H800M0 180H800M0 270H800M0 360H800"/>
+    <path d="M100 0V450M200 0V450M300 0V450M400 0V450M500 0V450M600 0V450M700 0V450"/>
+  </g>
+  <rect x="2" y="2" width="796" height="446" fill="none" stroke="#2a3441" stroke-dasharray="10 8"/>
+  <!-- diamond emblem -->
+  <g transform="translate(400,190)">
+    <rect x="-46" y="-46" width="92" height="92" transform="rotate(45)" fill="none" stroke="#5f6b78" stroke-width="2"/>
+    <rect x="-30" y="-30" width="60" height="60" transform="rotate(45)" fill="none" stroke="#ff4d5e" stroke-width="2"/>
+    <text x="0" y="8" fill="#5f6b78" font-size="26" text-anchor="middle">?</text>
+  </g>
+  <text x="400" y="310" fill="#5f6b78" font-size="22" letter-spacing="8" text-anchor="middle">CLASSIFIED</text>
+  <!-- redaction bars -->
+  <g fill="#222c38">
+    <rect x="270" y="336" width="260" height="10"/>
+    <rect x="310" y="356" width="180" height="10"/>
+  </g>
+  <text x="400" y="404" fill="#5f6b78" font-size="13" letter-spacing="3" text-anchor="middle">AWAITING NEXT DEPLOYMENT</text>
+</svg>
