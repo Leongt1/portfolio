@@ -23,7 +23,7 @@ export default function Contact() {
             <div className="space-y-1">
               <p className="text-hud-muted text-sm leading-relaxed mb-6 max-w-sm">
                 Open to entry / junior full-stack roles. Send a transmission below, or reach me
-                directly on any channel — all frequencies monitored.
+                directly on any channel - all frequencies monitored.
               </p>
               <ul className="space-y-4">
                 {channels.map((channel) => (

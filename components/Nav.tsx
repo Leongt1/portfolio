@@ -22,7 +22,7 @@ export default function Nav() {
         <Link
           href="/"
           className="font-mono text-lg tracking-[0.2em] text-hud-text"
-          aria-label="Noel George Thomas — home"
+          aria-label="Noel George Thomas - home"
         >
           NGT<span className="text-hud-red">{"//"}</span>
         </Link>

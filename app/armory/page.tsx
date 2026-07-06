@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
 
 export const metadata: Metadata = {
-  title: "Armory — Noel George Thomas",
+  title: "Armory - Noel George Thomas",
   description: "Swap your cursor for a HUD-flavored skin. Saved on your device.",
 };
 

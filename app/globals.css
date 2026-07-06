@@ -32,7 +32,7 @@ body {
   font-family: var(--font-display);
 }
 
-/* Faint tactical grid behind the hero — on a pseudo-element so the
+/* Faint tactical grid behind the hero - on a pseudo-element so the
    fade-out mask never touches the section's actual content */
 .hud-grid-bg {
   position: relative;
@@ -84,7 +84,7 @@ body {
   61%, 100% { transform: translateX(100vw); opacity: 0; }
 }
 
-/* Ticker marquee — track holds two copies of the content */
+/* Ticker marquee - track holds two copies of the content */
 .hud-ticker {
   overflow: hidden;
   white-space: nowrap;
@@ -101,7 +101,7 @@ body {
   to { transform: translateX(-50%); }
 }
 
-/* 3D tilt — TiltCard.tsx drives --rx / --ry on mousemove */
+/* 3D tilt - TiltCard.tsx drives --rx / --ry on mousemove */
 .hud-tilt {
   transform: perspective(800px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
   transition: transform 180ms ease-out;
@@ -118,7 +118,7 @@ body {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 18px 100%, 0 calc(100% - 18px));
 }
 
-/* Button clip — opposing corners, like the START button frame */
+/* Button clip - opposing corners, like the START button frame */
 .hud-clip-btn {
   clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
 }
@@ -128,14 +128,14 @@ button,
   cursor: pointer;
 }
 
-/* Equipped cursor skin — CursorProvider sets data-cursor-skin + --cursor-skin
+/* Equipped cursor skin - CursorProvider sets data-cursor-skin + --cursor-skin
    on <html>; interactive elements inherit the skin instead of `pointer` */
 :root[data-cursor-skin],
 :root[data-cursor-skin] :is(a, button, [role="button"], input, select, textarea, summary, label) {
   cursor: var(--cursor-skin), auto;
 }
 
-/* CTA buttons — VALORANT-style (see ui-demos/btn-animations.mp4):
+/* CTA buttons - VALORANT-style (see ui-demos/btn-animations.mp4):
    rectangular, thin offset frame line, small bottom-right notch, and a
    red fill with a slanted leading edge that wipes in from the left.
    Variants: -solid (white), -outline (red outline), -ghost (dark). */
@@ -150,7 +150,7 @@ button,
   transition: color 180ms ease 80ms, border-color 250ms ease;
 }
 .hud-btn::before {
-  /* the skewed red wipe — wider than the button so the slant never gaps */
+  /* the skewed red wipe - wider than the button so the slant never gaps */
   content: "";
   position: absolute;
   top: -1px;
@@ -261,7 +261,7 @@ button,
   transform: scaleX(1);
 }
 
-/* Scroll reveal — Reveal.tsx toggles .is-visible */
+/* Scroll reveal - Reveal.tsx toggles .is-visible */
 .hud-reveal {
   opacity: 0;
   transform: translateY(18px);
@@ -344,7 +344,7 @@ button,
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
   }
-  /* Hover micro-interactions are user-initiated, not ambient motion —
+  /* Hover micro-interactions are user-initiated, not ambient motion -
      keep the button sweep even under reduced motion */
   .hud-btn,
   .hud-btn::before {

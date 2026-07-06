@@ -6,7 +6,7 @@ export type CursorSkin = {
   file: string | null;
   /** cursor hotspot in px within the 32×32 SVG */
   hotspot: [number, number];
-  /** credits — display only for now; the credit system lands later */
+  /** credits - display only for now; the credit system lands later */
   price: number;
   unlocked: boolean;
 };
@@ -71,7 +71,7 @@ export const cursorSkins: CursorSkin[] = [
 export const CURSOR_STORAGE_KEY = "portfolio:cursor";
 export const CURSOR_CHANGE_EVENT = "portfolio:cursorchange";
 
-/** Cursor value without fallback — CSS appends `, auto` via var() usage. */
+/** Cursor value without fallback - CSS appends `, auto` via var() usage. */
 export function cursorValue(skin: CursorSkin): string {
   if (!skin.file) return "";
   return `url("${skin.file}") ${skin.hotspot[0]} ${skin.hotspot[1]}`;

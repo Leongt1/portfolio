@@ -4,7 +4,7 @@ import { neon } from "@neondatabase/serverless";
 /**
  * Stores contact-form submissions in Neon Postgres (free tier auto-wakes
  * on demand, so the form never goes dark from inactivity).
- * The table is created on first use — configuring the form is just
+ * The table is created on first use - configuring the form is just
  * setting DATABASE_URL to a Neon connection string.
  */
 export async function POST(request: Request) {
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
 
   const { name, email, message, company } = (body ?? {}) as Record<string, unknown>;
 
-  // Honeypot field — real users never fill it; pretend success for bots.
+  // Honeypot field - real users never fill it; pretend success for bots.
   if (typeof company === "string" && company.trim() !== "") {
     return NextResponse.json({ ok: true });
   }
@@ -43,7 +43,7 @@ export async function POST(request: Request) {
   const databaseUrl = process.env.DATABASE_URL;
   if (!databaseUrl) {
     return NextResponse.json(
-      { error: "Contact form is not configured yet — email me directly instead." },
+      { error: "Contact form is not configured yet - email me directly instead." },
       { status: 503 }
     );
   }

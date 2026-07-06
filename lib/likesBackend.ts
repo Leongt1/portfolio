@@ -85,7 +85,7 @@ export function getLikesBackend(): LikesBackend | null {
   if (url && token) {
     backend = upstashBackend(url, token);
   } else if (process.env.NODE_ENV !== "production") {
-    console.warn("[likes] no Upstash env vars — using in-memory dev backend");
+    console.warn("[likes] no Upstash env vars - using in-memory dev backend");
     backend = memoryBackend();
   } else {
     backend = null;

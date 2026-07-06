@@ -2,7 +2,7 @@
 
 /**
  * Shared client store for the like button (footer + floating pill read the
- * same state). Global mode talks to /api/likes — the server owns the count.
+ * same state). Global mode talks to /api/likes - the server owns the count.
  * When the API reports unavailable (no Redis configured), falls back to the
  * original local-only localStorage behavior.
  */

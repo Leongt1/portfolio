@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Noel George Thomas — Full-Stack Developer",
+    name: "Noel George Thomas - Full-Stack Developer",
     short_name: "NGT//",
     description:
       "Full-stack developer building production-grade systems in Go, Flutter and React.",

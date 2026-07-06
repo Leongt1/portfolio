@@ -17,11 +17,11 @@ const shareTechMono = Share_Tech_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Noel George Thomas — Full-Stack Developer",
+  title: "Noel George Thomas - Full-Stack Developer",
   description:
     "Full-stack developer building production-grade systems in Go, Flutter and React. 2+ years shipping to real users.",
   openGraph: {
-    title: "Noel George Thomas — Full-Stack Developer",
+    title: "Noel George Thomas - Full-Stack Developer",
     description:
       "Full-stack developer building production-grade systems in Go, Flutter and React.",
     type: "website",

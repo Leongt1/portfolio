@@ -3,7 +3,7 @@ import { createHmac, timingSafeEqual } from "crypto";
 /**
  * Signed "already liked" marker. httpOnly so client JS can't read it,
  * HMAC-signed so it can't be forged without the server secret. Deleting
- * it lets a visitor like again — accepted residual risk, bounded by the
+ * it lets a visitor like again - accepted residual risk, bounded by the
  * per-IP rate limit.
  */
 
@@ -14,7 +14,7 @@ function secret(): string {
   const s = process.env.LIKE_COOKIE_SECRET;
   if (s) return s;
   if (process.env.NODE_ENV === "production") {
-    console.warn("[likes] LIKE_COOKIE_SECRET not set — using build-time fallback");
+    console.warn("[likes] LIKE_COOKIE_SECRET not set - using build-time fallback");
   }
   return "dev-only-like-secret";
 }

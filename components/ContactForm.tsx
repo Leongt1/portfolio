@@ -38,7 +38,7 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4" aria-label="Contact form">
-      {/* Honeypot — hidden from real users */}
+      {/* Honeypot - hidden from real users */}
       <div className="hidden" aria-hidden>
         <label>
           Company
@@ -92,7 +92,7 @@ export default function ContactForm() {
           {status === "sending" ? "TRANSMITTING…" : "SEND TRANSMISSION"}
         </button>
         <p role="status" aria-live="polite" className="font-mono text-xs tracking-[0.15em]">
-          {status === "sent" && <span className="text-hud-cyan">✓ MESSAGE RECEIVED — I&apos;LL GET BACK TO YOU SOON.</span>}
+          {status === "sent" && <span className="text-hud-cyan">✓ MESSAGE RECEIVED - I&apos;LL GET BACK TO YOU SOON.</span>}
           {status === "error" && <span className="text-hud-red">{errorMsg.toUpperCase()}</span>}
         </p>
       </div>

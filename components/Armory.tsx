@@ -16,7 +16,7 @@ export default function Armory() {
           <SectionHeading eyebrow="ARMORY" title="Pointer Skins" />
           <p className="-mt-4 mb-10 max-w-2xl text-sm leading-relaxed text-hud-muted">
             Swap your cursor for something with a bit more attitude. Hover a card to test-drive a
-            skin, equip the one you like — it&apos;s saved on this device. Credits and unlocks are
+            skin, equip the one you like - it&apos;s saved on this device. Credits and unlocks are
             coming in a future patch; for now the whole rack is open.
           </p>
         </Reveal>
