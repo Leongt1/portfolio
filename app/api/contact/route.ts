@@ -1,16 +1,11 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { neon } from "@neondatabase/serverless";
 
 /**
- * Stores contact-form submissions in a Supabase `contact_messages` table:
- *   create table contact_messages (
- *     id uuid primary key default gen_random_uuid(),
- *     created_at timestamptz default now(),
- *     name text not null,
- *     email text not null,
- *     message text not null
- *   );
- * Env: SUPABASE_URL + SUPABASE_SECRET_KEY (server-only; RLS stays enabled with no public policies).
+ * Stores contact-form submissions in Neon Postgres (free tier auto-wakes
+ * on demand, so the form never goes dark from inactivity).
+ * The table is created on first use — configuring the form is just
+ * setting DATABASE_URL to a Neon connection string.
  */
 export async function POST(request: Request) {
   let body: unknown;
@@ -45,24 +40,29 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Message too long." }, { status: 400 });
   }
 
-  const url = process.env.SUPABASE_URL;
-  const key = process.env.SUPABASE_SECRET_KEY;
-  if (!url || !key) {
+  const databaseUrl = process.env.DATABASE_URL;
+  if (!databaseUrl) {
     return NextResponse.json(
       { error: "Contact form is not configured yet — email me directly instead." },
       { status: 503 }
     );
   }
 
-  const supabase = createClient(url, key, { auth: { persistSession: false } });
-  const { error } = await supabase.from("contact_messages").insert({
-    name: name.trim(),
-    email: email.trim(),
-    message: message.trim(),
-  });
-
-  if (error) {
-    console.error("contact insert failed:", error.message);
+  try {
+    const sql = neon(databaseUrl);
+    await sql`
+      CREATE TABLE IF NOT EXISTS contact_messages (
+        id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+        created_at timestamptz DEFAULT now(),
+        name text NOT NULL,
+        email text NOT NULL,
+        message text NOT NULL
+      )`;
+    await sql`
+      INSERT INTO contact_messages (name, email, message)
+      VALUES (${name.trim()}, ${email.trim()}, ${message.trim()})`;
+  } catch (error) {
+    console.error("contact insert failed:", error instanceof Error ? error.message : error);
     return NextResponse.json(
       { error: "Could not send the message. Try again or email me directly." },
       { status: 500 }
