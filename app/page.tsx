@@ -1,4 +1,3 @@
-import Armory from "@/components/Armory";
 import Nav from "@/components/Nav";
 import Ticker from "@/components/Ticker";
 import Hero from "@/components/Hero";
@@ -20,7 +19,6 @@ export default function Home() {
         <Experience />
         <Skills />
         <Education />
-        <Armory />
         <Ticker reversed />
         <Contact />
       </main>

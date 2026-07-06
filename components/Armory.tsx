@@ -10,7 +10,7 @@ export default function Armory() {
   const equippedId = useEquippedCursor();
 
   return (
-    <section id="armory" className="py-24 border-t border-hud-line">
+    <section id="armory" className="hud-grid-bg py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <SectionHeading eyebrow="ARMORY" title="Pointer Skins" />

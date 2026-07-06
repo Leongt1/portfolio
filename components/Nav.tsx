@@ -1,13 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 const links = [
-  { href: "#home", label: "HOME" },
-  { href: "#projects", label: "PROJECTS" },
-  { href: "#skills", label: "SKILLS" },
-  { href: "#armory", label: "ARMORY" },
-  { href: "#contact", label: "CONTACT" },
+  { href: "/#home", label: "HOME" },
+  { href: "/#projects", label: "PROJECTS" },
+  { href: "/#skills", label: "SKILLS" },
+  { href: "/#contact", label: "CONTACT" },
 ];
 
 export default function Nav() {
@@ -17,17 +17,17 @@ export default function Nav() {
     <header className="fixed top-0 inset-x-0 z-50 border-b border-hud-line bg-hud-bg/90 backdrop-blur">
       <nav
         aria-label="Primary"
-        className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6"
+        className="relative mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6"
       >
-        <a
-          href="#home"
+        <Link
+          href="/"
           className="font-mono text-lg tracking-[0.2em] text-hud-text"
           aria-label="Noel George Thomas — home"
         >
           NGT<span className="text-hud-red">{"//"}</span>
-        </a>
+        </Link>
 
-        <ul className="hidden sm:flex items-center gap-8">
+        <ul className="hidden sm:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
           {links.map((link) => (
             <li key={link.href}>
               <a
@@ -39,6 +39,13 @@ export default function Nav() {
             </li>
           ))}
         </ul>
+
+        <Link
+          href="/armory"
+          className="hidden sm:inline-block hud-btn hud-btn-inverse hud-clip-btn px-5 py-2 font-mono text-xs tracking-[0.25em] font-semibold"
+        >
+          ARMORY
+        </Link>
 
         <button
           type="button"
@@ -78,6 +85,15 @@ export default function Nav() {
               </a>
             </li>
           ))}
+          <li>
+            <Link
+              href="/armory"
+              onClick={() => setOpen(false)}
+              className="hud-btn hud-btn-inverse hud-clip-btn inline-block px-5 py-2 font-mono text-sm tracking-[0.25em] font-semibold"
+            >
+              ARMORY
+            </Link>
+          </li>
         </ul>
       )}
     </header>

@@ -128,6 +128,13 @@ button,
   cursor: pointer;
 }
 
+/* Equipped cursor skin — CursorProvider sets data-cursor-skin + --cursor-skin
+   on <html>; interactive elements inherit the skin instead of `pointer` */
+:root[data-cursor-skin],
+:root[data-cursor-skin] :is(a, button, [role="button"], input, select, textarea, summary, label) {
+  cursor: var(--cursor-skin), auto;
+}
+
 /* CTA buttons — white layer sweeps in from the left, text flips to red */
 .hud-btn {
   position: relative;
@@ -155,6 +162,20 @@ button,
 .hud-btn:hover::before,
 .hud-btn:focus-visible::before {
   transform: scaleX(1);
+}
+
+/* Inverse variant — white at rest, red sweeps in on hover */
+.hud-btn-inverse {
+  background: #ffffff;
+  color: var(--color-hud-bg);
+}
+.hud-btn-inverse::before {
+  background: var(--color-hud-red);
+}
+.hud-btn-inverse:hover,
+.hud-btn-inverse:focus-visible {
+  color: #ffffff;
+  border-color: var(--color-hud-red);
 }
 
 /* Corner brackets that appear on card hover */
@@ -293,5 +314,11 @@ button,
   *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+  }
+  /* Hover micro-interactions are user-initiated, not ambient motion —
+     keep the button sweep even under reduced motion */
+  .hud-btn,
+  .hud-btn::before {
+    transition-duration: 250ms !important;
   }
 }

@@ -71,7 +71,13 @@ export const cursorSkins: CursorSkin[] = [
 export const CURSOR_STORAGE_KEY = "portfolio:cursor";
 export const CURSOR_CHANGE_EVENT = "portfolio:cursorchange";
 
+/** Cursor value without fallback — CSS appends `, auto` via var() usage. */
+export function cursorValue(skin: CursorSkin): string {
+  if (!skin.file) return "";
+  return `url("${skin.file}") ${skin.hotspot[0]} ${skin.hotspot[1]}`;
+}
+
 export function cursorCss(skin: CursorSkin): string {
   if (!skin.file) return "";
-  return `url("${skin.file}") ${skin.hotspot[0]} ${skin.hotspot[1]}, auto`;
+  return `${cursorValue(skin)}, auto`;
 }
