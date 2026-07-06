@@ -1,5 +1,6 @@
 import { projects } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
+import TiltCard from "./TiltCard";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 
@@ -12,8 +13,10 @@ export default function Projects() {
         </Reveal>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, i) => (
-            <Reveal key={project.id} delay={i * 100}>
-              <ProjectCard project={project} index={i} />
+            <Reveal key={project.id} delay={i * 100} className="h-full">
+              <TiltCard>
+                <ProjectCard project={project} index={i} />
+              </TiltCard>
             </Reveal>
           ))}
         </div>

@@ -1,4 +1,6 @@
+import Armory from "@/components/Armory";
 import Nav from "@/components/Nav";
+import Ticker from "@/components/Ticker";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
@@ -14,9 +16,12 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <Projects />
+        <Ticker />
         <Experience />
         <Skills />
         <Education />
+        <Armory />
+        <Ticker reversed />
         <Contact />
       </main>
       <Footer />

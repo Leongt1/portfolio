@@ -18,7 +18,7 @@ export const projects: Project[] = [
     description:
       "Go-Gin REST APIs + React. JWT auth with refresh-token rotation, RBAC and strict per-user isolation. Real-time spending analytics dashboard with category breakdowns and month-over-month summaries.",
     tags: ["Go", "Gin", "React", "JWT", "PostgreSQL"],
-    thumbnail: "/thumbs/finai.svg",
+    thumbnail: "/thumbs/finai-thumbnail.png",
     liveUrl: "https://fin-ai-wheat.vercel.app/",
     // TODO: repoUrl
   },
@@ -29,7 +29,7 @@ export const projects: Project[] = [
     description:
       "Full-stack marketing + inquiry platform for a registered MSME across 5 verticals. Multi-step inquiry form with client-side validation, rate limiting and sanitized Supabase integration. Modular React SPA with a custom Tailwind v4 design system.",
     tags: ["React", "Tailwind v4", "Supabase", "SPA"],
-    thumbnail: "/thumbs/shepherd.svg",
+    thumbnail: "/thumbs/shepherd-thumbnail.png",
     liveUrl: "https://www.shepherdpathways.in/",
     // TODO: repoUrl
   },

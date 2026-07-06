@@ -3,13 +3,13 @@ export const profile = {
   role: "Full-Stack Developer",
   stackLine: "Go / Flutter / React",
   tagline:
-    "Building production-grade systems — shipped to 1K+ users, automated the boring parts, and cut the latency in half along the way.",
+    "Hey, I'm Noel 👋 I love taking an idea and turning it into something real that people actually use. These days that means Go backends, Flutter apps and React frontends — and having a genuinely good time building them.",
   location: "Bengaluru, India",
   email: "noelgthomas28@gmail.com",
   phone: "+91 83173 80313",
   github: "https://github.com/Leongt1",
   linkedin: "https://www.linkedin.com/in/noelgthomas/",
-  resumeUrl: "/resume.pdf", // TODO: drop the PDF into /public
+  resumeUrl: "/Noel_George_Thomas-Resume.pdf",
   stats: [
     { value: 2, suffix: "+", label: "YRS EXPERIENCE" },
     { value: 1, suffix: "K+", label: "APP USERS" },

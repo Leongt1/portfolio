@@ -11,7 +11,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <article
-      className={`hud-brackets hud-clip group flex flex-col bg-hud-panel transition-transform duration-200 hover:-translate-y-1 ${
+      className={`hud-brackets hud-clip group flex h-full flex-col bg-hud-panel transition-transform duration-200 hover:-translate-y-1 ${
         classified
           ? "border border-dashed border-hud-line2"
           : "border border-hud-line border-t-2 border-t-hud-red"

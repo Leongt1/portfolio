@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Chakra_Petch, Share_Tech_Mono } from "next/font/google";
 import "./globals.css";
+import CursorProvider from "@/components/CursorProvider";
 
 const chakraPetch = Chakra_Petch({
   variable: "--font-chakra",
@@ -36,7 +37,10 @@ export default function RootLayout({
       lang="en"
       className={`${chakraPetch.variable} ${shareTechMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <CursorProvider />
+        {children}
+      </body>
     </html>
   );
 }
