@@ -87,7 +87,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="hud-btn hud-clip-btn bg-hud-red px-8 py-3 font-mono text-sm tracking-[0.2em] font-semibold text-hud-bg disabled:opacity-50 disabled:pointer-events-none"
+          className="hud-btn hud-btn-outline px-8 py-3 font-mono text-sm tracking-[0.2em] font-semibold disabled:opacity-50 disabled:pointer-events-none"
         >
           {status === "sending" ? "TRANSMITTING…" : "SEND TRANSMISSION"}
         </button>

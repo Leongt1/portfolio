@@ -62,13 +62,13 @@ export default function Hero() {
         >
           <a
             href="#projects"
-            className="hud-btn hud-clip-btn bg-hud-red px-6 py-3 font-mono text-sm tracking-[0.2em] text-hud-bg font-semibold"
+            className="hud-btn hud-btn-solid px-6 py-3 font-mono text-sm tracking-[0.2em] font-semibold"
           >
             VIEW PROJECTS
           </a>
           <a
             href={profile.resumeUrl}
-            className="hud-btn hud-clip-btn border border-hud-line2 px-6 py-3 font-mono text-sm tracking-[0.2em] text-hud-text"
+            className="hud-btn hud-btn-ghost px-6 py-3 font-mono text-sm tracking-[0.2em]"
           >
             RÉSUMÉ
           </a>
@@ -76,7 +76,7 @@ export default function Hero() {
             href={profile.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="hud-btn hud-clip-btn border border-hud-line2 px-6 py-3 font-mono text-sm tracking-[0.2em] text-hud-text"
+            className="hud-btn hud-btn-ghost px-6 py-3 font-mono text-sm tracking-[0.2em]"
           >
             GITHUB ↗
           </a>

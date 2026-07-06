@@ -42,7 +42,7 @@ export default function Nav() {
 
         <Link
           href="/armory"
-          className="hidden sm:inline-block hud-btn hud-btn-inverse hud-clip-btn px-5 py-2 font-mono text-xs tracking-[0.25em] font-semibold"
+          className="hidden sm:inline-block hud-btn hud-btn-solid px-5 py-2 font-mono text-xs tracking-[0.25em] font-semibold"
         >
           ARMORY
         </Link>
@@ -89,7 +89,7 @@ export default function Nav() {
             <Link
               href="/armory"
               onClick={() => setOpen(false)}
-              className="hud-btn hud-btn-inverse hud-clip-btn inline-block px-5 py-2 font-mono text-sm tracking-[0.25em] font-semibold"
+              className="hud-btn hud-btn-solid inline-block px-5 py-2 font-mono text-sm tracking-[0.25em] font-semibold"
             >
               ARMORY
             </Link>

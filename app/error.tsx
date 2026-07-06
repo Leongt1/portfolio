@@ -35,13 +35,13 @@ export default function Error({
         <button
           type="button"
           onClick={reset}
-          className="hud-btn hud-clip-btn bg-hud-red px-8 py-3 font-mono text-sm tracking-[0.2em] font-semibold text-hud-bg"
+          className="hud-btn hud-btn-outline px-8 py-3 font-mono text-sm tracking-[0.2em] font-semibold"
         >
           RETRY OPERATION
         </button>
         <Link
           href="/"
-          className="hud-btn hud-clip-btn border border-hud-line2 px-8 py-3 font-mono text-sm tracking-[0.2em] text-hud-text"
+          className="hud-btn hud-btn-ghost px-8 py-3 font-mono text-sm tracking-[0.2em]"
         >
           RETURN TO BASE
         </Link>

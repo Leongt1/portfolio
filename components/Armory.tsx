@@ -61,8 +61,8 @@ export default function Armory() {
                     aria-pressed={equipped}
                     className={`mt-6 self-start px-6 py-2.5 font-mono text-xs tracking-[0.2em] ${
                       equipped
-                        ? "hud-clip-btn border border-hud-cyan text-hud-cyan cursor-default"
-                        : "hud-btn hud-clip-btn bg-hud-red font-semibold text-hud-bg"
+                        ? "border border-hud-cyan text-hud-cyan cursor-default"
+                        : "hud-btn hud-btn-outline font-semibold"
                     }`}
                   >
                     {equipped ? "EQUIPPED" : "EQUIP"}

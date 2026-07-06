@@ -17,7 +17,7 @@ export default function NotFound() {
       </p>
       <Link
         href="/"
-        className="hud-btn hud-clip-btn mt-10 bg-hud-red px-8 py-3 font-mono text-sm tracking-[0.2em] font-semibold text-hud-bg"
+        className="hud-btn hud-btn-outline mt-10 px-8 py-3 font-mono text-sm tracking-[0.2em] font-semibold"
       >
         RETURN TO BASE
       </Link>

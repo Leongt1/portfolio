@@ -135,46 +135,75 @@ button,
   cursor: var(--cursor-skin), auto;
 }
 
-/* CTA buttons — white layer sweeps in from the left, text flips to red */
+/* CTA buttons — VALORANT-style (see ui-demos/btn-animations.mp4):
+   rectangular, thin offset frame line, small bottom-right notch, and a
+   red fill with a slanted leading edge that wipes in from the left.
+   Variants: -solid (white), -outline (red outline), -ghost (dark). */
 .hud-btn {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   cursor: pointer;
-  transition: color 250ms ease, transform 250ms ease, border-color 250ms ease;
+  border: 1px solid transparent;
+  outline: 1px solid rgb(230 237 243 / 0.16); /* offset frame line */
+  outline-offset: 3px;
+  transition: color 180ms ease 80ms, border-color 250ms ease;
 }
 .hud-btn::before {
+  /* the skewed red wipe — wider than the button so the slant never gaps */
   content: "";
   position: absolute;
-  inset: 0;
+  top: -1px;
+  bottom: -1px;
+  left: -20%;
+  width: 145%;
   z-index: -1;
-  background: #ffffff;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 250ms ease;
+  background: var(--color-hud-red);
+  transform: translateX(-108%) skewX(18deg);
+  transition: transform 300ms cubic-bezier(0.6, 0, 0.3, 1);
 }
-.hud-btn:hover,
-.hud-btn:focus-visible {
-  color: var(--color-hud-red);
-  border-color: #ffffff;
-  transform: scale(1.04);
+.hud-btn::after {
+  /* bottom-right notch */
+  content: "";
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 5px;
+  height: 5px;
+  background: currentColor;
+  opacity: 0.9;
 }
 .hud-btn:hover::before,
 .hud-btn:focus-visible::before {
-  transform: scaleX(1);
+  transform: translateX(0) skewX(18deg);
+}
+.hud-btn:hover,
+.hud-btn:focus-visible {
+  color: var(--color-hud-bg);
+}
+.hud-btn:focus-visible {
+  outline: 2px solid var(--color-hud-cyan);
+  outline-offset: 4px;
 }
 
-/* Inverse variant — white at rest, red sweeps in on hover */
-.hud-btn-inverse {
+.hud-btn-solid {
   background: #ffffff;
   color: var(--color-hud-bg);
 }
-.hud-btn-inverse::before {
-  background: var(--color-hud-red);
+
+.hud-btn-outline {
+  background: transparent;
+  border-color: var(--color-hud-red);
+  color: var(--color-hud-red);
 }
-.hud-btn-inverse:hover,
-.hud-btn-inverse:focus-visible {
-  color: #ffffff;
+
+.hud-btn-ghost {
+  background: transparent;
+  border-color: var(--color-hud-line2);
+  color: var(--color-hud-text);
+}
+.hud-btn-ghost:hover,
+.hud-btn-ghost:focus-visible {
   border-color: var(--color-hud-red);
 }
 
@@ -319,6 +348,6 @@ button,
      keep the button sweep even under reduced motion */
   .hud-btn,
   .hud-btn::before {
-    transition-duration: 250ms !important;
+    transition-duration: 300ms !important;
   }
 }
