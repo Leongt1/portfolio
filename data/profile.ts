@@ -9,7 +9,8 @@ export const profile = {
   phone: "+91 83173 80313",
   github: "https://github.com/Leongt1",
   linkedin: "https://www.linkedin.com/in/noelgthomas/",
-  resumeUrl: "/Noel_George_Thomas-Resume.pdf",
+  // stable route → redirects to the Drive-hosted PDF (see next.config.ts)
+  resumeUrl: "/resume",
   stats: [
     { value: 2, suffix: "+", label: "YRS EXPERIENCE" },
     { value: 1, suffix: "K+", label: "APP USERS" },
