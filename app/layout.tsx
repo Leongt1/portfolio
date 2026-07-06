@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Chakra_Petch, Share_Tech_Mono } from "next/font/google";
 import "./globals.css";
 import CursorProvider from "@/components/CursorProvider";
+import LikeButton from "@/components/LikeButton";
 
 const chakraPetch = Chakra_Petch({
   variable: "--font-chakra",
@@ -40,6 +41,9 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <CursorProvider />
         {children}
+        <div className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-40">
+          <LikeButton variant="floating" />
+        </div>
       </body>
     </html>
   );
