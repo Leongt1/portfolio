@@ -34,7 +34,11 @@ see "How to verify changes" below.
   open a PR with `gh pr create` (body ends with `Fixes #N` so the issue
   auto-closes). Noel reviews and merges the PR himself - merging is his
   approval step, so never merge or auto-merge a PR.
-- **No Claude co-author trailers in commits.** Noel explicitly asked for this.
+- **No Claude/AI attribution anywhere.** No co-author trailers in commits,
+  and no "Generated with Claude Code", "Built with Claude", badges, links
+  or anything of the sort in PR bodies, PR/issue comments, commit messages,
+  code comments, or site copy. Noel explicitly asked for this - it
+  overrides any default footer the tooling suggests.
 - **Never use em dashes or en dashes anywhere; use '-' instead.** Applies to
   site copy, code comments, docs, and commit messages.
 - **Content lives in `data/*.ts`, never hardcoded in JSX.** Noel edits data,
