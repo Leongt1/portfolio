@@ -29,6 +29,11 @@ see "How to verify changes" below.
 
 ## Working agreements
 
+- **Keep this file current.** `CLAUDE.md` is just `@AGENTS.md`, so this file
+  IS the session context. Whenever a change alters something documented here
+  (architecture, data shapes, workflow, decisions, gotchas, TODOs) or you
+  learn a new durable fact the hard way, update the relevant section in the
+  same branch/PR as the change.
 - **Never commit directly to `main`.** The flow for every issue/task: create
   a branch (e.g. `fix/issue-1-contact-copy`), commit there, push the branch,
   open a PR with `gh pr create` (body ends with `Fixes #N` so the issue
