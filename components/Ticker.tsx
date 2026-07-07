@@ -4,7 +4,7 @@ const items = skillGroups.flatMap((group) => group.items);
 
 /** Decorative scrolling strip of stack keywords between sections. */
 export default function Ticker({ reversed = false }: { reversed?: boolean }) {
-  const line = items.map((item) => item.toUpperCase()).join("  //  ");
+  const line = items.map((item) => item.name.toUpperCase()).join("  //  ");
   const copy = `${line}  //  `;
 
   return (

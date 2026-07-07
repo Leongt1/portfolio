@@ -20,10 +20,11 @@ export default function Skills() {
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {group.items.map((item) => (
                     <li
-                      key={item}
-                      className="border border-hud-line2 px-3 py-1.5 font-mono text-xs tracking-[0.1em] text-hud-text hover:border-hud-cyan hover:text-hud-cyan transition-colors"
+                      key={item.name}
+                      className="flex items-center gap-2 border border-hud-line2 px-3 py-1.5 font-mono text-xs tracking-[0.1em] text-hud-text hover:border-hud-cyan hover:text-hud-cyan transition-colors"
                     >
-                      {item}
+                      <item.icon className="h-3.5 w-3.5 shrink-0" aria-hidden />
+                      {item.name}
                     </li>
                   ))}
                 </ul>

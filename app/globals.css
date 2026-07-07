@@ -36,6 +36,10 @@ body {
    fade-out mask never touches the section's actual content */
 .hud-grid-bg {
   position: relative;
+  /* The scanline (::after) exits 140px past the right edge; without this
+     the page grows a horizontal scrollbar at the end of every sweep */
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 .hud-grid-bg::before {
   content: "";
@@ -313,41 +317,5 @@ button,
   outline-offset: 2px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  .hud-reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  .hud-boot {
-    opacity: 1;
-    animation: none;
-  }
-  .hud-blink,
-  .hud-pulse,
-  .hud-grid-bg::before,
-  .hud-ticker-track {
-    animation: none;
-  }
-  .hud-grid-bg::after {
-    display: none;
-  }
-  .hud-tilt {
-    transform: none !important;
-  }
-  *,
-  *::before,
-  *::after {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-  }
-  /* Hover micro-interactions are user-initiated, not ambient motion -
-     keep the button sweep even under reduced motion */
-  .hud-btn,
-  .hud-btn::before {
-    transition-duration: 300ms !important;
-  }
-}
+/* Animations run for everyone: prefers-reduced-motion is deliberately
+   ignored site-wide (Noel's decision, 2026-07-07, issue #2). */

@@ -14,7 +14,7 @@ Those live one directory up and may be absent if only this folder was cloned -
 this file is self-sufficient for day-to-day work.
 
 Deployed on Vercel from https://github.com/Leongt1/portfolio (the repo root is
-THIS folder). Push to `main` = production deploy.
+THIS folder). Merge to `main` = production deploy.
 
 ## Commands
 
@@ -29,16 +29,21 @@ see "How to verify changes" below.
 
 ## Working agreements
 
+- **Never commit directly to `main`.** The flow for every issue/task: create
+  a branch (e.g. `fix/issue-1-contact-copy`), commit there, push the branch,
+  open a PR with `gh pr create` (body ends with `Fixes #N` so the issue
+  auto-closes). Noel reviews and merges the PR himself - merging is his
+  approval step, so never merge or auto-merge a PR.
 - **No Claude co-author trailers in commits.** Noel explicitly asked for this.
 - **Never use em dashes or en dashes anywhere; use '-' instead.** Applies to
   site copy, code comments, docs, and commit messages.
 - **Content lives in `data/*.ts`, never hardcoded in JSX.** Noel edits data,
   not markup.
 - Dark theme only - never wire `prefers-color-scheme`.
-- `prefers-reduced-motion` policy: **ambient** motion (ticker, scanline, grid
-  drift, card tilt, boot/reveal animations) must be disabled; **hover
-  micro-interactions** (button sweep) deliberately stay enabled - see the
-  reduced-motion block at the bottom of `app/globals.css`.
+- **Animations are always on for everyone**: `prefers-reduced-motion` is
+  deliberately ignored site-wide (Noel's decision, 2026-07-07, issue #2 -
+  trade-offs discussed and accepted). Do not add reduced-motion media
+  queries or matchMedia checks back.
 
 ## Architecture
 
@@ -47,6 +52,9 @@ see "How to verify changes" below.
   Footer. Plus `/armory` (cursor-skin store), themed `not-found.tsx` /
   `error.tsx`, and two API routes.
 - `data/` - profile, projects, experience, skills, education, cursors.
+  Skills are `{ name, icon }` objects (icon: `IconType` from `react-icons` -
+  Simple Icons `si` set, plus Tabler `tb` where Simple Icons has no entry:
+  VS Code and PgAdmin). `Ticker.tsx` also consumes skills via `item.name`.
 - `lib/` - likeStore (client), likesBackend + likeCookie (server).
 - Client components only where needed: Nav, LikeButton, Reveal, CountUp,
   TiltCard, CursorProvider, Armory, ContactForm.
@@ -92,10 +100,9 @@ see "How to verify changes" below.
   once made the whole hero content invisible. Grid + scanline live on
   `.hud-grid-bg::before/::after` pseudo-elements for exactly this reason.
 - **Noel's Windows has reduced-motion ON system-wide.** Headless probes on
-  this machine report `prefers-reduced-motion: reduce` - so ambient
-  animations are off both for him and in default headless tests. To verify
-  motion, use puppeteer's
-  `page.emulateMediaFeatures([{name:"prefers-reduced-motion",value:"no-preference"}])`.
+  this machine report `prefers-reduced-motion: reduce`. The site ignores
+  that setting since 2026-07-07, so animations show for him and in default
+  headless tests - no `emulateMediaFeatures` workaround needed anymore.
 - **Tailwind v4 preflight gives buttons `cursor: default`** - globals.css has
   the `button { cursor: pointer }` fix; don't remove it.
 - **Two `a[href="#projects"]` exist** (nav + hero CTA) - scope selectors
@@ -104,6 +111,14 @@ see "How to verify changes" below.
   (`react-hooks/set-state-in-effect`) - use `useSyncExternalStore` for
   external/localStorage state (see likeStore/CursorProvider pattern) or
   set state inside observer/event callbacks (see CountUp).
+- **Simple Icons (react-icons `si`) has no VS Code or PgAdmin icons** -
+  use Tabler's `TbBrandVscode` / `TbDatabaseCog` instead. Verify an icon
+  export exists (grep `node_modules/react-icons/si/index.d.ts`) before
+  importing; a missing export only fails at build-time type check.
+- **`next dev` refuses to start if another instance owns port 3000** - a
+  previous session's server can linger even after its task was stopped.
+  Find it with the error message's PID and `taskkill /PID <pid> /F`, or
+  just drive the existing server (it hot-reloads current code).
 
 ## How to verify changes (no test framework)
 
@@ -116,7 +131,7 @@ Drive the real app with puppeteer-core + the locally installed Edge -
 const puppeteer = require("puppeteer-core"); // npm i puppeteer-core in a scratch dir
 const edge = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
 const b = await puppeteer.launch({ executablePath: edge, headless: "new", args: ["--disable-gpu"] });
-// goto, wait ~1s, screenshot/evaluate; check both reduced-motion states
+// goto, wait ~1s, screenshot/evaluate
 ```
 
 Start dev server in background, poll the port (don't sleep blindly). After UI
@@ -135,6 +150,8 @@ contact table emptied).
 - Repo links for FinAI / Shepherd Pathways in `data/projects.ts` (or mark private).
 - `metadataBase` + OG image in `app/layout.tsx` once the final Vercel URL is
   chosen (matters for LinkedIn link previews).
+  `public/thumbs/portfolio-thumbnail.png` (hero screenshot) is committed but
+  referenced nowhere yet - candidate for the OG image or a projects entry.
 - Aim trainer (`// FIRING RANGE`, PRD §7.4) - optional phase 3, never built.
 - Credit system for cursor skins (armory copy already teases it).
 - Classified project slot awaits Noel's next project.

@@ -8,7 +8,7 @@ type CountUpProps = {
   durationMs?: number;
 };
 
-/** Counts from 0 to value when scrolled into view; respects reduced motion. */
+/** Counts from 0 to value when scrolled into view. */
 export default function CountUp({ value, suffix = "", durationMs = 900 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const [display, setDisplay] = useState(0);
@@ -21,10 +21,6 @@ export default function CountUp({ value, suffix = "", durationMs = 900 }: CountU
       ([entry]) => {
         if (!entry.isIntersecting) return;
         observer.disconnect();
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-          setDisplay(value);
-          return;
-        }
         const start = performance.now();
         const tick = (now: number) => {
           const t = Math.min(1, (now - start) / durationMs);
