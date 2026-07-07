@@ -14,7 +14,7 @@ Those live one directory up and may be absent if only this folder was cloned -
 this file is self-sufficient for day-to-day work.
 
 Deployed on Vercel from https://github.com/Leongt1/portfolio (the repo root is
-THIS folder). Push to `main` = production deploy.
+THIS folder). Merge to `main` = production deploy.
 
 ## Commands
 
@@ -29,6 +29,11 @@ see "How to verify changes" below.
 
 ## Working agreements
 
+- **Never commit directly to `main`.** The flow for every issue/task: create
+  a branch (e.g. `fix/issue-1-contact-copy`), commit there, push the branch,
+  open a PR with `gh pr create` (body ends with `Fixes #N` so the issue
+  auto-closes). Noel reviews and merges the PR himself - merging is his
+  approval step, so never merge or auto-merge a PR.
 - **No Claude co-author trailers in commits.** Noel explicitly asked for this.
 - **Never use em dashes or en dashes anywhere; use '-' instead.** Applies to
   site copy, code comments, docs, and commit messages.
@@ -47,6 +52,9 @@ see "How to verify changes" below.
   Footer. Plus `/armory` (cursor-skin store), themed `not-found.tsx` /
   `error.tsx`, and two API routes.
 - `data/` - profile, projects, experience, skills, education, cursors.
+  Skills are `{ name, icon }` objects (icon: `IconType` from `react-icons` -
+  Simple Icons `si` set, plus Tabler `tb` where Simple Icons has no entry:
+  VS Code and PgAdmin). `Ticker.tsx` also consumes skills via `item.name`.
 - `lib/` - likeStore (client), likesBackend + likeCookie (server).
 - Client components only where needed: Nav, LikeButton, Reveal, CountUp,
   TiltCard, CursorProvider, Armory, ContactForm.
@@ -103,6 +111,14 @@ see "How to verify changes" below.
   (`react-hooks/set-state-in-effect`) - use `useSyncExternalStore` for
   external/localStorage state (see likeStore/CursorProvider pattern) or
   set state inside observer/event callbacks (see CountUp).
+- **Simple Icons (react-icons `si`) has no VS Code or PgAdmin icons** -
+  use Tabler's `TbBrandVscode` / `TbDatabaseCog` instead. Verify an icon
+  export exists (grep `node_modules/react-icons/si/index.d.ts`) before
+  importing; a missing export only fails at build-time type check.
+- **`next dev` refuses to start if another instance owns port 3000** - a
+  previous session's server can linger even after its task was stopped.
+  Find it with the error message's PID and `taskkill /PID <pid> /F`, or
+  just drive the existing server (it hot-reloads current code).
 
 ## How to verify changes (no test framework)
 
@@ -134,6 +150,8 @@ contact table emptied).
 - Repo links for FinAI / Shepherd Pathways in `data/projects.ts` (or mark private).
 - `metadataBase` + OG image in `app/layout.tsx` once the final Vercel URL is
   chosen (matters for LinkedIn link previews).
+  `public/thumbs/portfolio-thumbnail.png` (hero screenshot) is committed but
+  referenced nowhere yet - candidate for the OG image or a projects entry.
 - Aim trainer (`// FIRING RANGE`, PRD §7.4) - optional phase 3, never built.
 - Credit system for cursor skins (armory copy already teases it).
 - Classified project slot awaits Noel's next project.
