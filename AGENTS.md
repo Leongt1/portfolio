@@ -29,12 +29,21 @@ see "How to verify changes" below.
 
 ## Working agreements
 
+- **Keep this file current.** `CLAUDE.md` is just `@AGENTS.md`, so this file
+  IS the session context. Whenever a change alters something documented here
+  (architecture, data shapes, workflow, decisions, gotchas, TODOs) or you
+  learn a new durable fact the hard way, update the relevant section in the
+  same branch/PR as the change.
 - **Never commit directly to `main`.** The flow for every issue/task: create
   a branch (e.g. `fix/issue-1-contact-copy`), commit there, push the branch,
   open a PR with `gh pr create` (body ends with `Fixes #N` so the issue
   auto-closes). Noel reviews and merges the PR himself - merging is his
   approval step, so never merge or auto-merge a PR.
-- **No Claude co-author trailers in commits.** Noel explicitly asked for this.
+- **No Claude/AI attribution anywhere.** No co-author trailers in commits,
+  and no "Generated with Claude Code", "Built with Claude", badges, links
+  or anything of the sort in PR bodies, PR/issue comments, commit messages,
+  code comments, or site copy. Noel explicitly asked for this - it
+  overrides any default footer the tooling suggests.
 - **Never use em dashes or en dashes anywhere; use '-' instead.** Applies to
   site copy, code comments, docs, and commit messages.
 - **Content lives in `data/*.ts`, never hardcoded in JSX.** Noel edits data,
@@ -115,6 +124,11 @@ see "How to verify changes" below.
   use Tabler's `TbBrandVscode` / `TbDatabaseCog` instead. Verify an icon
   export exists (grep `node_modules/react-icons/si/index.d.ts`) before
   importing; a missing export only fails at build-time type check.
+- **Don't stack PRs** (base = another PR's branch): deleting the base branch
+  after merging the first PR CLOSES the stacked PR, and GitHub cannot reopen
+  or retarget a closed PR whose base is gone - you must raise a new PR from
+  the (still intact) head branch. If work depends on an unmerged PR, wait
+  for it to merge, or accept re-raising.
 - **`next dev` refuses to start if another instance owns port 3000** - a
   previous session's server can linger even after its task was stopped.
   Find it with the error message's PID and `taskkill /PID <pid> /F`, or

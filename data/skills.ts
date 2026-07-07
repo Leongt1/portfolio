@@ -1,5 +1,6 @@
 import type { IconType } from "react-icons";
 import {
+  SiClaude,
   SiCursor,
   SiDart,
   SiFlutter,
@@ -18,7 +19,7 @@ import {
   SiTailwindcss,
   SiTypescript,
 } from "react-icons/si";
-import { TbBrandVscode, TbDatabaseCog } from "react-icons/tb";
+import { TbBrandVscode, TbDatabaseCog, TbSparkles } from "react-icons/tb";
 
 export type Skill = {
   name: string;
@@ -32,6 +33,15 @@ export type SkillGroup = {
 };
 
 export const skillGroups: SkillGroup[] = [
+  {
+    id: "ai",
+    label: "AI & AGENTS",
+    items: [
+      { name: "Claude Code", icon: SiClaude },
+      { name: "AI Workflows", icon: TbSparkles },
+      { name: "Google ADK", icon: SiGoogle },
+    ],
+  },
   {
     id: "languages",
     label: "LANGUAGES",
@@ -72,7 +82,6 @@ export const skillGroups: SkillGroup[] = [
       { name: "PgAdmin", icon: TbDatabaseCog },
       { name: "VS Code", icon: TbBrandVscode },
       { name: "Cursor", icon: SiCursor },
-      { name: "Google ADK", icon: SiGoogle },
     ],
   },
 ];
