@@ -35,10 +35,10 @@ see "How to verify changes" below.
 - **Content lives in `data/*.ts`, never hardcoded in JSX.** Noel edits data,
   not markup.
 - Dark theme only - never wire `prefers-color-scheme`.
-- `prefers-reduced-motion` policy: **ambient** motion (ticker, scanline, grid
-  drift, card tilt, boot/reveal animations) must be disabled; **hover
-  micro-interactions** (button sweep) deliberately stay enabled - see the
-  reduced-motion block at the bottom of `app/globals.css`.
+- **Animations are always on for everyone**: `prefers-reduced-motion` is
+  deliberately ignored site-wide (Noel's decision, 2026-07-07, issue #2 -
+  trade-offs discussed and accepted). Do not add reduced-motion media
+  queries or matchMedia checks back.
 
 ## Architecture
 
@@ -92,10 +92,9 @@ see "How to verify changes" below.
   once made the whole hero content invisible. Grid + scanline live on
   `.hud-grid-bg::before/::after` pseudo-elements for exactly this reason.
 - **Noel's Windows has reduced-motion ON system-wide.** Headless probes on
-  this machine report `prefers-reduced-motion: reduce` - so ambient
-  animations are off both for him and in default headless tests. To verify
-  motion, use puppeteer's
-  `page.emulateMediaFeatures([{name:"prefers-reduced-motion",value:"no-preference"}])`.
+  this machine report `prefers-reduced-motion: reduce`. The site ignores
+  that setting since 2026-07-07, so animations show for him and in default
+  headless tests - no `emulateMediaFeatures` workaround needed anymore.
 - **Tailwind v4 preflight gives buttons `cursor: default`** - globals.css has
   the `button { cursor: pointer }` fix; don't remove it.
 - **Two `a[href="#projects"]` exist** (nav + hero CTA) - scope selectors
@@ -116,7 +115,7 @@ Drive the real app with puppeteer-core + the locally installed Edge -
 const puppeteer = require("puppeteer-core"); // npm i puppeteer-core in a scratch dir
 const edge = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
 const b = await puppeteer.launch({ executablePath: edge, headless: "new", args: ["--disable-gpu"] });
-// goto, wait ~1s, screenshot/evaluate; check both reduced-motion states
+// goto, wait ~1s, screenshot/evaluate
 ```
 
 Start dev server in background, poll the port (don't sleep blindly). After UI

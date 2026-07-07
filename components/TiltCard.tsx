@@ -4,14 +4,13 @@ import { useRef } from "react";
 
 const MAX_TILT_DEG = 6;
 
-/** Tilts children toward the pointer on hover; inert under reduced motion. */
+/** Tilts children toward the pointer on hover. */
 export default function TiltCard({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
 
   function handleMove(event: React.MouseEvent<HTMLDivElement>) {
     const node = ref.current;
     if (!node) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const rect = node.getBoundingClientRect();
     const px = (event.clientX - rect.left) / rect.width - 0.5;
     const py = (event.clientY - rect.top) / rect.height - 0.5;
