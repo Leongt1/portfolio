@@ -36,6 +36,10 @@ body {
    fade-out mask never touches the section's actual content */
 .hud-grid-bg {
   position: relative;
+  /* The scanline (::after) exits 140px past the right edge; without this
+     the page grows a horizontal scrollbar at the end of every sweep */
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 .hud-grid-bg::before {
   content: "";
