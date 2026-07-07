@@ -3,7 +3,7 @@ export const profile = {
   role: "Full-Stack Developer",
   stackLine: "Go / Flutter / React",
   tagline:
-    "Hey, I'm Noel 👋 I love taking an idea and turning it into something real that people actually use. These days that means Go backends, Flutter apps and React frontends - and having a genuinely good time building them.",
+    "Hey, I'm Noel 👋 I love turning ideas into something real that people actually use. These days that means AI-driven workflows, reviewing more code than I write, understanding systems as a whole and building for scale - with whatever stack the problem actually needs. Still having a genuinely good time doing it.",
   location: "Bengaluru, India",
   email: "noelgthomas28@gmail.com",
   phone: "+91 83173 80313",

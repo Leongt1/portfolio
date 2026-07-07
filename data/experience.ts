@@ -26,7 +26,7 @@ export const experience: Role[] = [
     title: "Software Developer Intern",
     org: "APCWO",
     location: "Bengaluru",
-    period: "AUG 2023 - FEB 2024",
+    period: "OCT 2023 - FEB 2024",
     bullets: [
       "Built and shipped the first version of a cross-platform mobile app in Flutter/FlutterFlow with backend API integration; published to Play Store & App Store.",
       "Migrated a static marketing site to a Hugo + Go dynamic CMS, cutting content deployment from days to minutes for non-technical editors.",

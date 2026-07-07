@@ -11,7 +11,7 @@ export const education: Education[] = [
     id: "be-ise",
     degree: "B.E. Information Science & Engineering",
     school: "The Oxford College of Engineering, Bengaluru",
-    period: "AUG 2019 - MAY 2023",
+    period: "2019 - 2023",
     detail: "CGPA 8.7 / 10",
   },
   {
