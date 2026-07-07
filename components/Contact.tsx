@@ -12,7 +12,7 @@ const channels = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 border-t border-hud-line">
+    <section id="contact" className="py-16 border-t border-hud-line">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <SectionHeading eyebrow="COMMS" title="Contact" />

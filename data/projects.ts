@@ -16,7 +16,7 @@ export const projects: Project[] = [
     title: "FinAI",
     kicker: "Personal Finance Tracker",
     description:
-      "Go-Gin REST APIs + React. JWT auth with refresh-token rotation, RBAC and strict per-user isolation. Real-time spending analytics dashboard with category breakdowns and month-over-month summaries.",
+      "Tracks day-to-day spending and turns it into a live analytics dashboard - category breakdowns, month-over-month trends and where the money actually went. Built for multiple users from day one, with every account's data kept strictly private.",
     tags: ["Go", "Gin", "React", "JWT", "PostgreSQL"],
     thumbnail: "/thumbs/finai-thumbnail.png",
     liveUrl: "https://fin-ai-wheat.vercel.app/",
@@ -25,9 +25,9 @@ export const projects: Project[] = [
   {
     id: "shepherd-pathways",
     title: "Shepherd Pathways",
-    kicker: "Consultancy Platform · Freelance",
+    kicker: "Counselling Platform · Freelance",
     description:
-      "Full-stack marketing + inquiry platform for a registered MSME across 5 verticals. Multi-step inquiry form with client-side validation, rate limiting and sanitized Supabase integration. Modular React SPA with a custom Tailwind v4 design system.",
+      "The online home of Shepherd Pathways, a registered MSME offering non-clinical counselling - listening and peer support for people who need to be heard. Visitors explore the service and reach out through a guided multi-step inquiry form that keeps every submission safe and spam-free.",
     tags: ["React", "Tailwind v4", "Supabase", "SPA"],
     thumbnail: "/thumbs/shepherd-thumbnail.png",
     liveUrl: "https://www.shepherdpathways.in/",
