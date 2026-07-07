@@ -124,6 +124,11 @@ see "How to verify changes" below.
   use Tabler's `TbBrandVscode` / `TbDatabaseCog` instead. Verify an icon
   export exists (grep `node_modules/react-icons/si/index.d.ts`) before
   importing; a missing export only fails at build-time type check.
+- **Don't stack PRs** (base = another PR's branch): deleting the base branch
+  after merging the first PR CLOSES the stacked PR, and GitHub cannot reopen
+  or retarget a closed PR whose base is gone - you must raise a new PR from
+  the (still intact) head branch. If work depends on an unmerged PR, wait
+  for it to merge, or accept re-raising.
 - **`next dev` refuses to start if another instance owns port 3000** - a
   previous session's server can linger even after its task was stopped.
   Find it with the error message's PID and `taskkill /PID <pid> /F`, or
