@@ -301,6 +301,10 @@ button,
 .hud-blink {
   animation: hud-blink 1.6s steps(1) infinite;
 }
+/* Slow, smooth variant - live-status dot on project thumbnails */
+.hud-blink-slow {
+  animation: hud-blink 3.2s ease-in-out infinite;
+}
 
 /* Like button pulse */
 @keyframes hud-pulse {

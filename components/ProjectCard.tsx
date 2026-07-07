@@ -30,11 +30,22 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`${project.title} - live site`}
-            className="absolute bottom-2 right-2 flex items-center gap-1.5 border border-hud-red/40 bg-hud-bg/70 px-2 py-0.5 font-mono text-[10px] tracking-[0.2em] text-hud-red shadow-[0_0_10px_rgba(255,70,85,0.45)] transition-shadow hover:shadow-[0_0_16px_rgba(255,70,85,0.7)]"
+            aria-label={`${project.title} - open live site`}
+            className="group/thumb absolute inset-0"
           >
-            <span className="hud-blink h-1.5 w-1.5 rounded-full bg-hud-red" aria-hidden />
-            LIVE
+            <span
+              aria-hidden
+              className="absolute top-2 right-2 font-mono text-sm text-hud-cyan [text-shadow:0_0_8px_rgba(10,14,19,0.9)] transition-transform duration-200 group-hover/thumb:translate-x-1 group-hover/thumb:-translate-y-1"
+            >
+              ↗
+            </span>
+            <span
+              aria-hidden
+              className="absolute bottom-2 right-2 flex items-center gap-1.5 font-mono text-[10px] tracking-[0.2em] text-hud-red [text-shadow:0_0_8px_rgba(255,70,85,0.6)]"
+            >
+              <span className="hud-blink-slow h-1.5 w-1.5 rounded-full bg-hud-red shadow-[0_0_6px_rgba(255,70,85,0.8)]" />
+              LIVE
+            </span>
           </a>
         )}
       </div>
