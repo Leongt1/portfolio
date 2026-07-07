@@ -1,4 +1,5 @@
 import { profile } from "@/data/profile";
+import { SiGithub } from "react-icons/si";
 import CountUp from "./CountUp";
 
 export default function Hero() {
@@ -76,8 +77,9 @@ export default function Hero() {
             href={profile.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="hud-btn hud-btn-ghost px-6 py-3 font-mono text-sm tracking-[0.2em]"
+            className="hud-btn hud-btn-ghost flex items-center gap-2 px-6 py-3 font-mono text-sm tracking-[0.2em]"
           >
+            <SiGithub className="h-4 w-4 shrink-0" aria-hidden />
             GITHUB ↗
           </a>
         </div>
