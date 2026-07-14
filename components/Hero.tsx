@@ -51,7 +51,7 @@ export default function Hero() {
         </p>
 
         <div
-          className="hud-boot mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl"
+          className="hud-boot mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl"
           style={{ "--boot-delay": "480ms" } as React.CSSProperties}
         >
           {profile.stats.map((stat) => (
