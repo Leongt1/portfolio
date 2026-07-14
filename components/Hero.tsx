@@ -31,6 +31,18 @@ export default function Hero() {
           {profile.location.toUpperCase()}
         </p>
 
+        {profile.availability && (
+          <div
+            className="hud-boot mt-5 inline-flex items-center gap-2.5 border border-hud-line2 bg-hud-panel px-3 py-1.5"
+            style={{ "--boot-delay": "300ms" } as React.CSSProperties}
+          >
+            <span className="hud-blink h-2 w-2 bg-hud-cyan" aria-hidden />
+            <span className="font-mono text-[11px] tracking-[0.25em] text-hud-cyan">
+              STATUS: {profile.availability}
+            </span>
+          </div>
+        )}
+
         <p
           className="hud-boot mt-6 max-w-2xl text-lg text-hud-muted"
           style={{ "--boot-delay": "360ms" } as React.CSSProperties}

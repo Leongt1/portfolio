@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 // Résumé lives in Google Drive so updating it never requires a commit or
-// redeploy: replace the file via Drive's "Manage versions" and the ID —
-// and therefore this link — stays the same. RESUME_URL env var overrides
+// redeploy: replace the file via Drive's "Manage versions" and the ID -
+// and therefore this link - stays the same. RESUME_URL env var overrides
 // it without a code change if the file ever moves.
 const RESUME_URL =
   process.env.RESUME_URL ??
