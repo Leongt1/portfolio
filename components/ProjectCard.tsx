@@ -23,8 +23,31 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           alt={classified ? "Classified project placeholder" : `${project.title} preview`}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
-          className={`object-cover ${classified ? "opacity-70" : ""}`}
+          className={`object-cover ${classified ? "opacity-70" : "opacity-80"}`}
         />
+        {project.liveUrl && !classified && (
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${project.title} - open live site`}
+            className="group/thumb absolute inset-0"
+          >
+            <span
+              aria-hidden
+              className="absolute top-2 right-2 font-mono text-sm text-hud-cyan [text-shadow:0_0_8px_rgba(10,14,19,0.9)] transition-transform duration-200 group-hover/thumb:translate-x-1 group-hover/thumb:-translate-y-1"
+            >
+              ↗
+            </span>
+            <span
+              aria-hidden
+              className="absolute bottom-2 right-2 flex items-center gap-1.5 font-mono text-[10px] tracking-[0.2em] text-hud-red [text-shadow:0_0_8px_rgba(255,70,85,0.6)]"
+            >
+              <span className="hud-blink-slow h-1.5 w-1.5 rounded-full bg-hud-red shadow-[0_0_6px_rgba(255,70,85,0.8)]" />
+              LIVE
+            </span>
+          </a>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col p-6">
@@ -54,29 +77,21 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           ))}
         </ul>
 
-        <div className="mt-auto pt-5 flex gap-5 font-mono text-xs tracking-[0.2em]">
-          {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hud-underline text-hud-red"
-            >
-              LIVE ↗
-            </a>
-          )}
-          {project.repoUrl && (
-            <a
-              href={project.repoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hud-underline text-hud-cyan"
-            >
-              REPO ↗
-            </a>
-          )}
-          {classified && <span className="text-hud-dim">ACCESS DENIED</span>}
-        </div>
+        {(project.repoUrl || classified) && (
+          <div className="mt-auto pt-5 flex gap-5 font-mono text-xs tracking-[0.2em]">
+            {project.repoUrl && (
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hud-underline text-hud-cyan"
+              >
+                REPO ↗
+              </a>
+            )}
+            {classified && <span className="text-hud-dim">ACCESS DENIED</span>}
+          </div>
+        )}
       </div>
     </article>
   );

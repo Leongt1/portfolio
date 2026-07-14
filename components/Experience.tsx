@@ -4,7 +4,7 @@ import SectionHeading from "./SectionHeading";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 border-t border-hud-line">
+    <section id="experience" className="py-16 border-t border-hud-line">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <SectionHeading eyebrow="SERVICE RECORD" title="Experience" />
