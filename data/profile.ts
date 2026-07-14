@@ -15,6 +15,5 @@ export const profile = {
   stats: [
     { value: 2, suffix: "+", label: "YRS EXPERIENCE" },
     { value: 1, suffix: "K+", label: "APP USERS" },
-    { value: 60, suffix: "%", label: "COMMS AUTOMATED" },
   ],
 } as const;
