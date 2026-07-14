@@ -50,14 +50,15 @@ see "How to verify changes" below.
 ## Architecture
 
 - Single-page scroll site: `app/page.tsx` composes Nav → Hero → Projects →
-  Ticker → Experience → Skills → Education → Ticker(reversed) → Contact →
-  Footer. Plus `/armory` (cursor-skin store), themed `not-found.tsx` /
-  `error.tsx`, and two API routes.
+  Ticker → Experience → Skills → Education → GithubActivity →
+  Ticker(reversed) → Contact → Footer. Plus `/armory` (cursor-skin store),
+  themed `not-found.tsx` / `error.tsx`, and two API routes.
 - `data/` - profile, projects, experience, skills, education, cursors.
   Skills are `{ name, icon }` objects (icon: `IconType` from `react-icons` -
   Simple Icons `si` set, plus Tabler `tb` where Simple Icons has no entry:
   VS Code and PgAdmin). `Ticker.tsx` also consumes skills via `item.name`.
-- `lib/` - likeStore (client), likesBackend + likeCookie (server).
+- `lib/` - likeStore (client), likesBackend + likeCookie (server),
+  githubContributions (server).
 - Client components only where needed: Nav, LikeButton, Reveal, CountUp,
   TiltCard, CursorProvider, Armory, ContactForm.
 - Design tokens: Tailwind v4 `@theme` in `app/globals.css` (`--color-hud-*`);
@@ -91,6 +92,19 @@ see "How to verify changes" below.
   `company` (bots get fake success). Graceful 503 when `DATABASE_URL` unset.
   Chosen over Supabase because Neon free tier auto-wakes; Supabase free
   pauses whole projects after ~7 days idle.
+- **GitHub activity heatmap** (`components/GithubActivity.tsx` +
+  `lib/githubContributions.ts`): server component that fetches
+  `github.com/users/<user>/contributions` - GitHub's public HTML endpoint,
+  no token, no API quota - and regex-parses date/level/count per day.
+  Username is derived from `profile.github`. The fetch uses
+  `next: { revalidate: 21600 }`, which turns `/` from fully static into
+  ISR (6h) - expected, visible in build output. Parser is deliberately
+  defensive: any failure (network, markup change, <300 day cells parsed)
+  renders a "SIGNAL LOST" fallback panel instead of breaking the page.
+  Heat colors are `color-mix()` shades of `--color-hud-red`, not GitHub
+  green.
+- **Hero status chip**: `profile.availability` in `data/profile.ts` drives
+  the "STATUS: ..." chip in the hero - edit/empty the data, not the JSX.
 - **Résumé**: `/resume` redirect in `next.config.ts` → Google Drive
   direct-download URL. Noel updates it via Drive "Manage versions" (same file
   ID, link never breaks) - never re-add a PDF to the repo. `RESUME_URL` env
